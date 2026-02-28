@@ -16,25 +16,24 @@ public class Counter {
      * Increments the counter value by one.
      */
     public void increment(){ 
-        value++;  // increments value
+        value++;
     }
 
     /**
      * Decrements the counter value by one.
-     * 
-     * @throws IllegalStateException if the current value is zero
+     * @return false if the decrementation can't be done otherwise true
      */
-    public void decrement(){ 
-        if(value==0) // if already zero signal error
-            throw new IllegalStateException("Connot decrement at zero"); 
-        value--; // otherwise decrements
+    public boolean decrement(){ 
+        if(value==0) return false;
+        value--;
+        return true;
     }
 
     /**
      * Resets the counter value to zero.
      */
     public void reset(){
-        value=0;  // increments value
+        value=0;
     }
 
     /**

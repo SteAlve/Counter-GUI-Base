@@ -1,7 +1,5 @@
 package it.polito.sda.examples.counter;
 
-import javax.swing.JOptionPane;
-
 /**
  * Controller class handles user interactions and coordinates between the Counter model and CounterUI view.
  * 
@@ -42,14 +40,9 @@ public class CounterCtrl {
     /**
      * Handles the minus button action.
      * Decrements the counter and updates the UI.
-     * Displays an error dialog if decrementing below zero is attempted.
      */
     public void minus(){
-        try{
-            counter.decrement();
-        }catch(IllegalStateException ise){
-            JOptionPane.showMessageDialog(ui, ise, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        counter.decrement();
         ui.update();
     }
 

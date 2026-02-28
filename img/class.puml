@@ -2,6 +2,12 @@
     class CounterUI {
         +update()
     }
+    interface CounterI {
+        +increment()
+        +decrement()
+        +reset()
+        +getValue()
+    }
     class Counter {
         +increment()
         +decrement()
@@ -14,9 +20,10 @@
         +reset()
         ~setUI()
     }
-    CounterUI -> Counter: counter
+    CounterUI -> CounterI: counter
     CounterCtrl -> CounterUI: ui
-    CounterCtrl -> Counter: counter
+    Counter --|> CounterI: extends
+    CounterCtrl -> CounterI: counter
     CounterUI ..> CounterCtrl :uses
     Counter <.. MainApp: creates
     CounterCtrl <.. MainApp: creates
