@@ -2,7 +2,7 @@ package it.polito.sda.examples.counter;
 
 public interface CounterI {
     void increment();
-    void decrement();
+    boolean decrement();
     void reset();
     int getValue();
 }

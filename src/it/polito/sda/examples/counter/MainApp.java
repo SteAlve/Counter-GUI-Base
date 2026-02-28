@@ -17,7 +17,7 @@ public class MainApp {
     static void main(){
         Counter model = new Counter();
         CounterCtrl controller = new CounterCtrl(model);
-        CounterUI view = new CounterUI(model, controller);
+        CounterUI view = new CounterUI(controller);
         view.start();
     }
 }

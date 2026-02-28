@@ -20,19 +20,16 @@ public class CounterUI extends JFrame {
     JButton plus = new JButton("+");
     JButton minus = new JButton("-");
     JButton reset = new JButton("Reset");
-    Counter counter;
-
+    private final CounterCtrl controller;
     /**
      * Constructs a new CounterUI with the specified counter model and controller.
      * Initializes the GUI components and sets up event listeners.
      * 
-     * @param counter the Counter model to display
      * @param controller the CounterCtrl that handles user interactions
      */
-    public CounterUI(Counter counter, CounterCtrl controller) {
+    public CounterUI(CounterCtrl controller) {
         super("Counter");
-        this.counter = counter;
-
+        this.controller = controller;
         // layout
         JPanel rootContainer = new JPanel();
         rootContainer.setLayout(new BorderLayout());
@@ -47,10 +44,18 @@ public class CounterUI extends JFrame {
         rootContainer.add(reset, BorderLayout.SOUTH);
 
         // events
-        controller.setUI(this);
-        plus.addActionListener(e -> controller.plus());
-        minus.addActionListener(e -> controller.minus());
-        reset.addActionListener(e -> controller.reset());
+        plus.addActionListener(e -> {
+            controller.plus();
+            update();
+        });
+        minus.addActionListener(e -> {
+            controller.minus();
+            update();
+        });
+        reset.addActionListener(e -> {
+            controller.reset();
+            update();
+        });
 
 
         this.add(rootContainer);
@@ -67,7 +72,7 @@ public class CounterUI extends JFrame {
      * Called by the controller after the model state changes.
      */
     public void update(){
-        label.setText(String.valueOf(counter.getValue()));
+        label.setText(String.valueOf(controller.getValue()));
     }
 
 }

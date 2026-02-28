@@ -18,7 +18,7 @@ class CounterUITest {
     void setUp() {
         counter = new Counter();
         controller = new CounterCtrl(counter);
-        ui = new CounterUI(counter, controller);
+        ui = new CounterUI(controller);
         ui.start();
     }
 

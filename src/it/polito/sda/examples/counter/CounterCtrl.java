@@ -7,51 +7,39 @@ package it.polito.sda.examples.counter;
  * @version 1.0
  */
 public class CounterCtrl {
-    Counter counter;
-    CounterUI ui;
+    CounterI counter;
 
     /**
      * Constructs a new CounterCtrl with the specified counter model.
      * 
      * @param counter the Counter model to control
      */
-    public CounterCtrl(Counter counter){
+    public CounterCtrl(CounterI counter){
         this.counter = counter;
     }
 
     /**
-     * Sets the UI view associated with this controller.
-     * 
-     * @param ui the CounterUI view to be updated by this controller
-     */
-    public void setUI(CounterUI ui){
-        this.ui = ui;
-    }
-
-    /**
      * Handles the plus button action.
-     * Increments the counter and updates the UI.
      */
     public void plus(){
         counter.increment();
-        ui.update();
     }
 
     /**
      * Handles the minus button action.
-     * Decrements the counter and updates the UI.
      */
     public void minus(){
         counter.decrement();
-        ui.update();
     }
 
     /**
      * Handles the reset button action.
-     * Resets the counter to zero and updates the UI.
      */
     public void reset(){
         counter.reset();
-        ui.update();
+    }
+
+    public int getValue() {
+        return counter.getValue();
     }
 }

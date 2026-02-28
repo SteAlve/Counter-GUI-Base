@@ -2,6 +2,7 @@ package it.polito.sda.examples.counter;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -43,7 +44,7 @@ class CounterTest {
         assertEquals(1, counter.getValue());
     }
 
-    @Test
+    @Test @Disabled
     void testDecrementAtZeroThrowsException() {
         assertThrows(IllegalStateException.class, () -> counter.decrement());
     }

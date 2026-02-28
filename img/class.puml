@@ -1,31 +1,39 @@
 @startuml
-    class CounterUI {
-        +update()
-    }
-    interface CounterI {
-        +increment()
-        +decrement()
-        +reset()
-        +getValue()
-    }
-    class Counter {
-        +increment()
-        +decrement()
-        +reset()
-        +getValue()
-    }
-    class CounterCtrl {
-        +plus()
-        +minus()
-        +reset()
-        ~setUI()
-    }
-    CounterUI -> CounterI: counter
-    CounterCtrl -> CounterUI: ui
-    Counter --|> CounterI: extends
-    CounterCtrl -> CounterI: counter
-    CounterUI ..> CounterCtrl :uses
-    Counter <.. MainApp: creates
-    CounterCtrl <.. MainApp: creates
-    CounterUI <.. MainApp: creates
+top to bottom direction
+
+class CounterUI {
+    +update()
+}
+
+class CounterCtrl {
+    +plus()
+    +minus()
+    +reset()
+    +getValue()
+}
+
+interface CounterI {
+    +increment()
+    +decrement()
+    +reset()
+    +getValue()
+}
+
+class Counter {
+    +increment()
+    +decrement()
+    +reset()
+    +getValue()
+}
+
+class MainApp
+
+Counter --|> CounterI
+CounterCtrl --> CounterI : uses
+CounterUI --> CounterCtrl : uses
+
+MainApp ..> Counter: creates
+MainApp ..> CounterCtrl: creates
+MainApp ..> CounterUI: creates
+
 @enduml
